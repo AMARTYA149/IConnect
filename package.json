@@ -1,0 +1,17 @@
+{
+  "name": "iconnect",
+  "version": "1.0.0",
+  "description": "My social media application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "social"
+  ],
+  "author": "Amartya Aishwarya",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
