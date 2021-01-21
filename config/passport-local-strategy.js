@@ -18,7 +18,7 @@ passport.use(
           return done(err);
         }
 
-        if (!user || !user.password != password) {
+        if (!user || user.password != password) {
           console.log("Invalid Username/Password");
           return done(null, false);
         }
