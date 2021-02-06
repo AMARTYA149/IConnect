@@ -11,11 +11,12 @@ module.exports.create = async function (req, res) {
       content: req.body.content,
       user: req.user._id,
     });
-
+    let userName = req.user.name;
     if (req.xhr) {
       return res.status(200).json({
         data: {
           post: post,
+          userName: userName,
         },
         message: "Post created!",
       });

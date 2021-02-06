@@ -2,7 +2,6 @@
   //method to submit the form data for new post using AJAX
   let createPost = function () {
     let newPostForm = $("#new-post-form");
-
     newPostForm.submit(function (e) {
       e.preventDefault();
 
@@ -11,8 +10,8 @@
         url: "/posts/create",
         data: newPostForm.serialize(),
         success: function (data) {
-          // console.log(data);
-          let newPost = newPostDom(data.data.post);
+          //console.log(data);
+          let newPost = newPostDom(data.data.post, data.data.userName);
           $("#posts-list-container>ul").prepend(newPost);
         },
         error: function (error) {
@@ -23,7 +22,7 @@
   };
 
   //method to create the form in DOM
-  let newPostDom = function (post) {
+  let newPostDom = function (post, userName) {
     return $(`<li id="post-${post._id}">
                 <p>                  
                   <small>
@@ -31,7 +30,7 @@
                   </small>
                   ${post.content}
                   <br />
-                  <small> ${post.user.name} </small>
+                  <small> ${userName} </small>
                 </p>
                 <div class="post-comments">                 
                   <form action="/comments/create" method="POST">
