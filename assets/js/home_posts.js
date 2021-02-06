@@ -13,6 +13,7 @@
           //console.log(data);
           let newPost = newPostDom(data.data.post, data.data.userName);
           $("#posts-list-container>ul").prepend(newPost);
+          deletePost($(" .delete-post-button", newPost));
         },
         error: function (error) {
           console.log(error.responseText);
@@ -54,6 +55,25 @@
                 </div>
               </li>
             `);
+  };
+
+  //method to delete a post from DOM
+  let deletePost = function (deleteLink) {
+    $(deleteLink).click(function (e) {
+      e.preventDefault();
+
+      $.ajax({
+        type: "GET",
+        url: $(deleteLink).prop("href"),
+        success: function (data) {
+          console.log(data);
+          $(`#post-${data.data.post_id}`).remove();
+        },
+        error: function (error) {
+          console.log(error.responseText);
+        },
+      });
+    });
   };
 
   createPost();
