@@ -31,6 +31,7 @@ module.exports.update = async function (req, res) {
           user.avatar = User.avatarPath + "/" + req.file.filename;
         }
         user.save();
+        return res.redirect("back");
       });
     } catch (error) {
       req.flash("error", error);
