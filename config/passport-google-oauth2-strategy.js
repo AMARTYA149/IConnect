@@ -22,7 +22,7 @@ passport.use(
           console.log(" Error in Google Strategy Passport", err);
           return;
         }
-
+        console.log(accessToken, refreshToken);
         console.log(profile);
 
         if (user) {
