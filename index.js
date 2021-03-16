@@ -26,15 +26,17 @@ console.log("chat server is listening on 5000");
 
 const path = require("path");
 
-app.use(
-  sassMiddleware({
-    src: path.join(__dirname, env.asset_path, "scss"),
-    dest: path.join(__dirname, env.asset_path, "css"),
-    debug: true,
-    outputStyle: "extended",
-    prefix: "/css",
-  })
-);
+if (env.name == "development") {
+  app.use(
+    sassMiddleware({
+      src: path.join(__dirname, env.asset_path, "scss"),
+      dest: path.join(__dirname, env.asset_path, "css"),
+      debug: true,
+      outputStyle: "extended",
+      prefix: "/css",
+    })
+  );
+}
 
 app.use(express.urlencoded());
 
